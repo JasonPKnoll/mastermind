@@ -1,7 +1,5 @@
-require '.lib/game'
+require 'rspec'
+require './lib/game'
 
-p "Welcome to MASTERMIND"
-p "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
-
-@game = Game.new(placeholder)
-game.introduction
+game1 = Game.new
+game1.introduction

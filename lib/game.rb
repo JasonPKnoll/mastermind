@@ -15,12 +15,15 @@ class Game
     secret_sequence = 'GGRB'
     if player_guess == "q" or player_guess == "quit"
       exit_game
-    elsif player_guess 'c' or player_guess == "cheat"
+    elsif player_guess == 'c' or player_guess == "cheat"
       p "This is the secret code" # REFERENCE TO SECRET CODE
+      end_game
     elsif player_guess.length < 4
       p "Your guess sequence is too short."
+      guess
     elsif player_guess.length > 4
       p "Your guess sequence is too long."
+      guess
     elsif player_guess == secret_sequence
       end_game
     else
@@ -35,6 +38,15 @@ class Game
     22 seconds."
     puts
     puts "Do you want to (p)lay again or (q)uit?"
+    player_input = gets.chomp.downcase
+    if player_input == 'p' or player_input == 'play'
+      start_game
+    elsif player_input == 'q' or player_input == 'quit'
+      exit_game
+    else
+      p "#{input} is not a valid command."
+      player_input
+    end
   end
 
 
@@ -48,7 +60,7 @@ class Game
   def player_input
     input = gets.chomp.downcase
     if input == 'p' or input == 'play'
-      p "start_game"
+      start_game
     elsif input == 'i' or input == 'instructions'
       p 'instructions'
       player_input
@@ -64,6 +76,3 @@ class Game
     p 'Goodbye!'
   end
 end
-
-game1 = Game.new
-game1.introduction
