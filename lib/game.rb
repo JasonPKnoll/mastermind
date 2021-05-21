@@ -58,7 +58,7 @@ class Game
   end
 
   def end_game
-    puts "Congratulations! You guessed the sequence 'GRRB' in 8 guesses over 4 minutes,
+    puts "Congratulations! You guessed the sequence #{@secret_sequence} in 8 guesses over 4 minutes,
     22 seconds."
     puts
     puts "Do you want to (p)lay again or (q)uit?"
