@@ -1,5 +1,5 @@
 class SecretSequence
-  attr_reader :secret_code, :guess 
+  attr_reader :secret_code, :guess
 
   def initialize(guess)
     @guess = guess
