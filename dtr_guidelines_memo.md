@@ -3,6 +3,7 @@ Project: Master Mind
 Group Member Names: *Antonio King, Jason Knoll*
 
 Goals and Expectations for the Project (What does each group member hope to get out of this project? What do we want to achieve as a team? How will we know that we're successful?):
+*Update: Keep awareness of project time, progress, and concept learning. Allot time for individualize learning and processing.*
 
 Team strengths & collaboration styles (consider discussing your Pairin qualities here):
 
@@ -26,6 +27,6 @@ Additional Remote Considerations:
 
 Project management tools we will use (GitHub projects or Trello are popular tools):
 
-Day 1 Agenda:
+Day 1 Agenda:**
 
 Additional Notes:
