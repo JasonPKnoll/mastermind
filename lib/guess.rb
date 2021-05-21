@@ -5,4 +5,8 @@ class Guess
     @sequence = sequence
   end
 
+  def convert_guess
+    @sequence.split(//)
+  end
+
 end
