@@ -1,14 +1,18 @@
 require 'rspec'
+require './lib/player'
+require './lib/guess'
 require './lib/secret_sequence'
 
 describe SecretSequence do
   it 'exists and has attributes' do
-    code1 = SecretSequence.new('rbgy')
+    # guess1 = Guess.new()
+
+    code1 = SecretSequence.new(['b', 'g', 'r', 'y'])
 
     expect(code1).to be_an(SecretSequence)
   end
 
-  it 'shuffles array' do
+  it 'generates random sequence' do
     code1 = SecretSequence.new('rbgy')
 
     code1.randomize_sequence
