@@ -30,20 +30,19 @@ class Game
   end
 
   def start_game
+    @secret_sequence.randomize_sequence
     puts "I have generated a beginner sequence with four elements made up of: (r)ed,
     (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game.
     What's your guess?"
-    guess # This needs to be the players input for a guess
+    guess
   end
 
   def guess
     player_guess = gets.chomp.downcase
-    # secret_sequence = 'GGRB'
     if player_guess == "q" or player_guess == "quit"
       exit_game
     elsif player_guess == 'c' or player_guess == "cheat"
-      # code.convert_to_string
-      p "This is the secret code:  #{@secret_sequence}" # REFERENCE TO SECRET CODE
+      p "This is the secret code:  #{@secret_sequence.convert_to_string.upcase}" # REFERENCE TO SECRET CODE
 
       end_game
     elsif player_guess.length < 4
@@ -62,7 +61,7 @@ class Game
   end
 
   def end_game
-    puts "Congratulations! You guessed the sequence #{@secret_sequence} in 8 guesses over 4 minutes,
+    puts "Congratulations! You guessed the sequence #{@secret_sequence.convert_to_string.upcase} in 8 guesses over 4 minutes,
     22 seconds."
     puts
     puts "Do you want to (p)lay again or (q)uit?"

@@ -1,5 +1,4 @@
 require 'rspec'
-require './lib/color'
 require './lib/board'
 require './lib/guess'
 require './lib/player'

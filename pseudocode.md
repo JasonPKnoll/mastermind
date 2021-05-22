@@ -21,7 +21,7 @@ Guess Class
 
 Checker Class
   * Compare player guess to computer generated secret code.
-  * Determines correct color
+  * Determines correct color 
   * Determines correct position  
 
 Board Class

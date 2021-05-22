@@ -1,5 +1,3 @@
-require './lib/color'
-
 class Board
   attr_reader :slot, :num
 
@@ -8,7 +6,7 @@ class Board
     @num = num
   end
 
-  # computer will  reference randomize the array and put out 
+  # computer will  reference randomize the array and put out
   # the new array (maybe .map here?)
   def comp_colors
   end
