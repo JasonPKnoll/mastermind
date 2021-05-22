@@ -26,12 +26,12 @@ describe SecretSequence do
     expect(code1.secret_code).not_to eq(['r', 'b', 'g', 'r'])
     expect(code1.secret_code).not_to eq(['b', 'g', 'y', 'r'])
     expect(code1.secret_code).not_to eq(['g', 'y', 'r', 'b'])
-    expect(code1.secret_code).to eq(['b', 'r', 'y', 'g'])
+    expect(code1.secret_code).not_to eq(['b', 'r', 'y', 'g'])
   end
 
-  xit 'Converts Secret Sequence to a string' do
+  it 'Converts Secret Sequence to a string' do
     code1 = SecretSequence.new
-    @secret_code = ['r', 'b', 'g', 'y']
+
     expect(code1.convert_to_string).to eq('rbgy')
   end
 

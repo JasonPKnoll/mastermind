@@ -1,19 +1,13 @@
 class SecretSequence
-  attr_reader :secret_code, :converted_code
+  attr_reader :secret_code
 
   def initialize
-    @secret_code = []
+    @secret_code = ['r', 'b', 'g', 'y']
   end
 
   def randomize_sequence
-
-    2.times do
-      array = ['r', 'b', 'g', 'y']
-      @secret_code << array.shuffle.pop
-      @secret_code << array.shuffle.pop
-    end
-
-    @secret_code.shuffle
+    array = ['g', 'g', 'b', 'b', 'r', 'r', 'y', 'y']
+    @secret_code = array.permutation(4).to_a.shuffle.at(0)
   end
 
   def convert_to_string
