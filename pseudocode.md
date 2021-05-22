@@ -16,12 +16,14 @@ Secret_sequence Class
 
 Guess Class
   * *Convert guess to array*  -  compare to secret sequence
-  * Convert array back to string - to output it to send feed back.
-  * Needs to be 4 element which needs to be case insensitive
+  * *Convert array back to string - to output it to send feed back.*
+  * *Needs to be 4 element which needs to be case insensitive*
+  * tracking number of guesses
+  * reset tracker
 
 Checker Class
   * Compare player guess to computer generated secret code.
-  * Determines correct color 
+  * Determines correct color
   * Determines correct position  
 
 Board Class

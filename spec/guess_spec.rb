@@ -19,5 +19,21 @@ describe Guess do
 
       expect(guess1.convert_guess).to eq(['r', 'g', 'b', 'y'])
     end
+
+    it 'converts array to string' do
+      guess1 = Guess.new(['r', 'g', 'b', 'y'])
+      # guess1.convert_guess
+      # guess1.convert_to_string
+      expect(guess1.convert_to_string).to eq('rgby')
+    end
+
+    # it 'tracks guesses' do
+    #   guess1 = Guess.new('rbgy')
+    #   guess1.convert_guess
+    #   guess2 = Guess.new('rbgy')
+    #   guess2.convert_guess
+    #
+    #   expect(gu)
+    # end
   end
 end
