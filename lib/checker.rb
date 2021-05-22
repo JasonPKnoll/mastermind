@@ -14,53 +14,66 @@ class Checker
   end
 
   def compare_position
-
+    position_counter = 0
+    if @guess[0] == @computer[0]
+      position_counter += 1
+    end
+    if @guess[1] == @computer[1]
+      position_counter += 1
+    end
+    if @guess[2] == @computer[2]
+      position_counter += 1
+    end
+    if @guess[3] == @computer[3]
+      position_counter += 1
+    end
+    position_counter
   end
 
 
-  def r_color
-    gr = guess.count('r')
-
-  end
-
-  def colors_array  # [rbgy] - [rggy] = 4 - [g].count = 3
-    color_compare = []
-    color_compare = @guess - @computer
-  end
-
-
-  # Count R's B's G's Y's
-  def guess_colors
-    r = @guess.count('r') # = 2
-    y = @guess.count('y')
-    b = @guess.count('b')
-    g = @guess.count('g')
-    count = r + y + b + g
-  end
-
-  def computer_colors
-    r = @computer.count('r') # = 1
-    y = @computer.count('y')
-    b = @computer.count('b')
-    g = @computer.count('g')
-    count = r + y + b + g
-  end
-
-  def analyze_colors
-    gr = @guess.count('r')
-    gy = @guess.count('y')
-    gb = @guess.count('b')
-    gg = @guess.count('g')
-    gcount = gr + gy + gb + gg
-
-    cr = @computer.count('r')
-    cy = @computer.count('y')
-    cb = @computer.count('b')
-    cg = @computer.count('g')
-    ccount = cr + cy + cb + cg
-
-    return @guess.count('r') if gr - cr == 0
-  end
+  # def r_color
+  #   gr = guess.count('r')
+  #
+  # end
+  #
+  # def colors_array  # [rbgy] - [rggy] = 4 - [g].count = 3
+  #   color_compare = []
+  #   color_compare = @guess - @computer
+  # end
+  #
+  #
+  # # Count R's B's G's Y's
+  # def guess_colors
+  #   r = @guess.count('r') # = 2
+  #   y = @guess.count('y')
+  #   b = @guess.count('b')
+  #   g = @guess.count('g')
+  #   count = r + y + b + g
+  # end
+  #
+  # def computer_colors
+  #   r = @computer.count('r') # = 1
+  #   y = @computer.count('y')
+  #   b = @computer.count('b')
+  #   g = @computer.count('g')
+  #   count = r + y + b + g
+  # end
+  #
+  # def analyze_colors
+  #   gr = @guess.count('r')
+  #   gy = @guess.count('y')
+  #   gb = @guess.count('b')
+  #   gg = @guess.count('g')
+  #   gcount = gr + gy + gb + gg
+  #
+  #   cr = @computer.count('r')
+  #   cy = @computer.count('y')
+  #   cb = @computer.count('b')
+  #   cg = @computer.count('g')
+  #   ccount = cr + cy + cb + cg
+  #
+  #   return @guess.count('r') if gr - cr == 0
+  # end
   # def analyze_colors
   #   color_counter = 0
   #   @guess.each do |color|
