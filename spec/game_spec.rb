@@ -1,4 +1,5 @@
 require 'rspec'
+require './lib/secret_sequence'
 require './lib/board'
 require './lib/guess'
 require './lib/player'

@@ -1,5 +1,6 @@
 require 'rspec'
 require './lib/game'
 
-game = Game.new('rgby')   #argument needs to reference secret_sequence
+code = SecretSequence.new
+game = Game.new(code)   #argument needs to reference secret_sequence
 game.introduction
