@@ -1,7 +1,7 @@
 require './lib/game'
 
 class Checker
-  attr_reader :guess
+  attr_reader :guess, :guess_tries
 
   def initialize(guess, computer)
     @guess = guess
@@ -13,6 +13,7 @@ class Checker
     @guess == @computer
   end
 
+  # Link to game
   def compare_position
     position_counter = 0
     if @guess[0] == @computer[0]
@@ -28,6 +29,10 @@ class Checker
       position_counter += 1
     end
     position_counter
+  end
+
+  def track_guesses
+    @guess_tries += 1
   end
 
 

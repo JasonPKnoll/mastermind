@@ -1,10 +1,13 @@
 require './lib/secret_sequence'
+require './lib/checker'
+require './lib/guess'
 
 class Game
-  attr_reader :secret_sequence
+  attr_reader :secret_sequence, :guess_tries
 
   def initialize(secret_sequence)
     @secret_sequence = secret_sequence
+    @guess_tries = 0
   end
 
   def introduction
@@ -39,6 +42,7 @@ class Game
 
   def guess
     player_guess = gets.chomp.downcase
+    play_guess = Guess.new(player_guess)
     if player_guess == "q" or player_guess == "quit"
       exit_game
     elsif player_guess == 'c' or player_guess == "cheat"
@@ -54,10 +58,19 @@ class Game
     elsif player_guess == @secret_sequence
       end_game
     else
-      p "#{player_guess} has 3 of the correct elements with 2 in the correct positions"
-      p "You've taken 1 guess"
+      guess_array = play_guess.convert_guess
+      secret_array = @secret_sequence.secret_code
+      check = Checker.new(guess_array, secret_array)
+      p "#{player_guess} has 3 of the correct elements with #{check.compare_position
+      } in the correct positions"
+      p "You've taken #{track_guesses} guess"
       guess
     end
+  end
+
+  def track_guesses
+    @guess_tries += 1
+    @guess_tries
   end
 
   def end_game
