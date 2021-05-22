@@ -1,3 +1,5 @@
+require './lib/secret_sequence'
+
 class Game
   attr_reader :secret_sequence
 
@@ -40,7 +42,9 @@ class Game
     if player_guess == "q" or player_guess == "quit"
       exit_game
     elsif player_guess == 'c' or player_guess == "cheat"
-      p "This is the secret code" # REFERENCE TO SECRET CODE
+      # code.convert_to_string
+      p "This is the secret code:  #{@secret_sequence}" # REFERENCE TO SECRET CODE
+
       end_game
     elsif player_guess.length < 4
       p "Your guess sequence is too short."

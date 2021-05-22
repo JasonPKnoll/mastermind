@@ -12,7 +12,7 @@ Game Class
 
 Secret_sequence Class
   * *Randomize Sequence through shuffle shift loop*
-  * Convert Array to string
+  * *Convert Array to string*
 
 Guess Class
   * *Convert guess to array*  -  compare to secret sequence
