@@ -25,4 +25,10 @@ describe Game do
     # expect(game1.introduction).to eq('p')
   # end
 
+  it "calulates time in minutes and seconds" do
+    game1 = Game.new('rgby')
+
+    expect(game1.timer_converter).to eq(47)
+  end
+
 end

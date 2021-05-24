@@ -3,11 +3,13 @@ require './lib/checker'
 require './lib/guess'
 
 class Game
-  attr_reader :secret_sequence, :guess_tries
+  attr_reader :secret_sequence, :guess_tries, :t1, :t2
 
   def initialize(secret_sequence)
     @secret_sequence = secret_sequence
     @guess_tries = 0
+    @t1 = 0.000000
+    @t2 = 466.678954
   end
 
   def introduction
@@ -33,7 +35,9 @@ class Game
   end
 
   def start_game
+    @t1 = Time.now
     @secret_sequence.randomize_sequence
+
     puts "I have generated a beginner sequence with four elements made up of: (r)ed,
     (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game.
     What's your guess?"
@@ -73,9 +77,21 @@ class Game
     @guess_tries
   end
 
+  def timer_converter_seconds
+    time = @t2 - @t1
+    seconds_remaining = (time % 60).round(0)
+  end
+
+  def timer_converter_minutes
+    time = @t2 - @t1
+    minutes = (time / 60).floor
+  end
+
   def end_game
-    puts "Congratulations! You guessed the sequence #{@secret_sequence.convert_to_string.upcase} in 8 guesses over 4 minutes,
-    22 seconds."
+    @t2 = Time.now
+
+    puts "Congratulations! You guessed the sequence #{@secret_sequence.convert_to_string.upcase} in 8 guesses over #{timer_converter_minutes} minutes,
+    #{timer_converter_seconds} seconds."
     puts
     puts "Do you want to (p)lay again or (q)uit?"
     player_input = gets.chomp.downcase
