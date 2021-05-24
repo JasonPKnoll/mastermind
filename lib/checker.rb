@@ -30,18 +30,39 @@ class Checker
     position_counter
   end
 
-  def r_color
-    gr = @guess.count('r')
-    cr = @computer.count('r')
-    diff = cr - gr
+  def colors
+    correct_color = 0
+    
+    g1_dup = @guess.find_all do |color|
+      @guess.count(color) > 1
+    end
 
-    if gr == cr
-      gr
-    elsif gr < cr
-      
+    c1_dup = @computer.find_all do |color|
+      @computer.count(color) > 1
+    end
+
+    # g1_dup
+    # c1_dup
+
+    diff = @computer - @guess
+    diff_dup = c1_dup - g1_dup
+
+    correct_color = 4 - (diff.uniq.count + diff_dup.uniq.count)
+  end
+
+
+  # def r_color
+  #   gr = @guess.count('r')
+  #   cr = @computer.count('r')
+  #   diff = cr - gr
+  #
+  #   if gr == cr
+  #     gr
+  #   elsif gr < cr
+  #
     # time to start considering hashes
 
-  end
+  # end
 
   # def colors_array  # [rbgy] - [rggy] = 4 - [g].count = 3
   #   color_compare = []
