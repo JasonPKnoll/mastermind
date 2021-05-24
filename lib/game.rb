@@ -90,7 +90,7 @@ class Game
   def end_game
     @t2 = Time.now
 
-    puts "Congratulations! You guessed the sequence #{@secret_sequence.convert_to_string.upcase} in 8 guesses over #{timer_converter_minutes} minutes,
+    puts "Congratulations! You guessed the sequence #{@secret_sequence.convert_to_string.upcase} in #{track_guesses} guesses over #{timer_converter_minutes} minutes,
     #{timer_converter_seconds} seconds."
     puts
     puts "Do you want to (p)lay again or (q)uit?"
