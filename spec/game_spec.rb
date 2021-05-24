@@ -25,10 +25,12 @@ describe Game do
     # expect(game1.introduction).to eq('p')
   # end
 
-  it "calulates time in minutes and seconds" do
-    game1 = Game.new('rgby')
+  it "tracks guesses" do
+    game1 = Game.new('rbgy')
+    game1.track_guesses
+    game1.track_guesses
 
-    expect(game1.timer_converter).to eq(47)
+    expect(game1.guess_tries).to eq(2)
   end
 
 end
