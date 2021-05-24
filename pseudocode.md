@@ -1,5 +1,6 @@
 Runner File
   * This just initiates the game
+
 Game Class
   * *player input prompts*
   * *start game*
@@ -10,6 +11,7 @@ Game Class
   * *exit game*
   * *tracking number of guesses*
   * link Classes / Methods back to input loop
+  * *Timer that will start as soon as the player inputs their first guess, and ends on their correct guess.*
 
 Secret_sequence Class
   * *Randomize Sequence through shuffle shift loop*
@@ -27,4 +29,3 @@ Checker Class
   * *Determines correct position - and link to game*
 
 Board Class
-  * Timer that will start as soon as the player inputs their first guess, and ends on their correct guess.

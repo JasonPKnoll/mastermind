@@ -13,7 +13,6 @@ class Checker
     @guess == @computer
   end
 
-  # Link to game
   def compare_position
     position_counter = 0
     if @guess[0] == @computer[0]
@@ -31,16 +30,19 @@ class Checker
     position_counter
   end
 
-  def track_guesses
-    @guess_tries += 1
+  def r_color
+    gr = @guess.count('r')
+    cr = @computer.count('r')
+    diff = cr - gr
+
+    if gr == cr
+      gr
+    elsif gr < cr
+      
+    # time to start considering hashes
+
   end
 
-
-  # def r_color
-  #   gr = guess.count('r')
-  #
-  # end
-  #
   # def colors_array  # [rbgy] - [rggy] = 4 - [g].count = 3
   #   color_compare = []
   #   color_compare = @guess - @computer

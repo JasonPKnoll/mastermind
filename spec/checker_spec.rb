@@ -26,16 +26,6 @@ describe Checker do
       expect(check1.compare).to eq(true)
     end
 
-    xit 'Verifies colors in array' do
-      guess1 = Guess.new('rbgy')
-      game1 = Game.new(['r', 'b', 'g', 'y'])
-      guess = guess1.convert_guess
-      computer = game1.secret_sequence
-      check1 = Checker.new(guess, computer)
-
-      expect(check1.analyze_colors).to eq(5)
-    end
-
     it 'Compares position' do
       guess1 = Guess.new('rbbg')
       game1 = Game.new(['r', 'b', 'g', 'y'])
@@ -66,5 +56,16 @@ describe Checker do
       check1 = Checker.new(guess, computer)
       expect(check1.compare_position).to eq(1)
     end
+
+    it 'Verifies r colors in array' do
+      guess1 = Guess.new('rryy')
+      game1 = Game.new(['b', 'r', 'b', 'b'])
+      guess = guess1.convert_guess
+      computer = game1.secret_sequence
+      check1 = Checker.new(guess, computer)
+
+      expect(check1.r_color).to eq(1)
+    end
+
   end
 end
