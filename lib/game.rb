@@ -65,7 +65,7 @@ class Game
       guess_array = play_guess.convert_guess
       secret_array = @secret_sequence.secret_code
       check = Checker.new(guess_array, secret_array)
-      p "#{player_guess} has 3 of the correct elements with #{check.compare_position
+      p "#{player_guess} has #{check.colors} of the correct elements with #{check.compare_position
       } in the correct positions"
       p "You've taken #{track_guesses} guess"
       guess
