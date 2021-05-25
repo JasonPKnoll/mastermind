@@ -59,7 +59,7 @@ class Game
     elsif player_guess.length > 4
       p "Your guess sequence is too long."
       guess
-    elsif player_guess == @secret_sequence
+    elsif player_guess == @secret_sequence.convert_to_string    #guessing secret doesn't end game???
       end_game
     else
       guess_array = play_guess.convert_guess
