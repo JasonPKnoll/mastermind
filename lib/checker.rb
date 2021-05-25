@@ -1,19 +1,12 @@
-# require './lib/game'
-
 class Checker
-  attr_reader :guess, :computer, :guess_tries
+  attr_reader :guess, :computer
 
   def initialize(guess, computer)
     @guess = guess
     @computer = computer
-    @guess_tries = 0
   end
 
-  def compare   #Do we need this???
-    @guess == @computer
-  end
-
-  def compare_position
+  def position_feedback
     position_counter = 0
     if @guess[0] == @computer[0]
       position_counter += 1
@@ -30,22 +23,19 @@ class Checker
     position_counter
   end
 
-  def colors
-    # correct_color = 0
+  def color_feedback
+    colors_not_guessed = @computer - @guess
 
-    g1_dup = @guess.find_all do |color|
+    guess_duplicates = @guess.find_all do |color|
       @guess.count(color) > 1
     end
 
-    c1_dup = @computer.find_all do |color|
+    computer_duplicates = @computer.find_all do |color|
       @computer.count(color) > 1
     end
 
-    diff = @computer - @guess
-    diff_dup = c1_dup - g1_dup
+    colors_not_guessed_dup = computer_duplicates - guess_duplicates
 
-    # correct_color = 4 - (diff.uniq.count + diff_dup.uniq.count)
-    4 - (diff.uniq.count + diff_dup.uniq.count)
+    4 - (colors_not_guessed.uniq.count + colors_not_guessed_dup.uniq.count)
   end
-
 end
