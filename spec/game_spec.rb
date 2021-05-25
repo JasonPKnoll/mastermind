@@ -25,4 +25,12 @@ describe Game do
     # expect(game1.introduction).to eq('p')
   # end
 
+  it "tracks guesses" do
+    game1 = Game.new('rbgy')
+    game1.track_guesses
+    game1.track_guesses
+
+    expect(game1.guess_tries).to eq(2)
+  end
+
 end
