@@ -24,7 +24,10 @@ class Game
     if input == 'p' or input == 'play'
       start_game
     elsif input == 'i' or input == 'instructions'
-      p 'instructions'
+      puts 'The object of Mastermind is to guess a secret code consisting of 4
+colors (red, blue, green, or yellow). A single color may be dupliocated
+only once. Each guess results in feedback narrowing down the possibilities
+of the code. You win when you guess the correct code sequence.'
       player_input
     elsif input == 'q' or input == 'quit'
       exit_game
