@@ -1,21 +1,18 @@
 require 'rspec'
-require './lib/player'
-require './lib/guess'
 require './lib/secret_sequence'
 
 describe SecretSequence do
   it 'exists and has attributes' do
-    # guess1 = Guess.new()
-
     code1 = SecretSequence.new
 
     expect(code1).to be_an(SecretSequence)
+    expect(code1.secret_code).to eq(['r', 'b', 'g', 'y'])
   end
 
   it 'generates random sequence' do
     code1 = SecretSequence.new
-
     code1.randomize_sequence
+
     expect(code1.secret_code).not_to eq(['r', 'b', 'g', 'y'])
     expect(code1.secret_code).not_to eq(['r', 'b', 'g', 'y'])
     expect(code1.secret_code).not_to eq(['r', 'r', 'g', 'y'])
@@ -29,7 +26,7 @@ describe SecretSequence do
     expect(code1.secret_code).not_to eq(['b', 'r', 'y', 'g'])
   end
 
-  it 'Converts Secret Sequence to a string' do
+  it 'converts secret sequence to a string' do
     code1 = SecretSequence.new
 
     expect(code1.convert_to_string).to eq('rbgy')

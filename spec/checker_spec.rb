@@ -14,8 +14,11 @@ describe Checker do
 
       expect(check1).to be_an_instance_of(Checker)
       expect(check1.guess).to eq(['r', 'b', 'g', 'y'])
+      expect(check1.computer).to eq(['r', 'b', 'g', 'y'])
+      expect(check1.guess_tries).to eq(0)
     end
 
+    #Prob don't need this test
     it "compares and has arrays" do
       guess1 = Guess.new('rbgy')
       game1 = Game.new(['r', 'b', 'g', 'y'])
@@ -26,7 +29,7 @@ describe Checker do
       expect(check1.compare).to eq(true)
     end
 
-    it 'Compares position' do
+    it 'returns correct number of guessed positions' do
       guess1 = Guess.new('rbbg')
       game1 = Game.new(['r', 'b', 'g', 'y'])
       guess = guess1.convert_guess
@@ -57,7 +60,7 @@ describe Checker do
       expect(check1.compare_position).to eq(1)
     end
 
-    it 'returns correct number of colors' do
+    it 'returns correct number of guessed colors' do
       guess1 = Guess.new('rrrr')
       game1 = Game.new(['y', 'r', 'r', 'y'])
       guess = guess1.convert_guess
@@ -65,6 +68,10 @@ describe Checker do
       check1 = Checker.new(guess, computer)
 
       expect(check1.colors).to eq(2)
+    end
+
+    it 'resets tracker to zero' do
+      
     end
 
   end
