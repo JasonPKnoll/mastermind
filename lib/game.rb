@@ -1,60 +1,59 @@
 require './lib/secret_sequence'
 require './lib/checker'
 require './lib/guess'
+require './lib/timer'
 
 class Game
-  attr_reader :secret_sequence, :guess_tries, :t1, :t2
+  attr_reader :secret_sequence
 
   def initialize(secret_sequence)
     @secret_sequence = secret_sequence
-    @guess_tries = 0
-    @t1 = 0.000000
-    @t2 = 466.678954
+    @guess_count = Guess.new('rbgy')
+    @stopwatch = Timer.new
   end
 
   def introduction
     p "Welcome to MASTERMIND!"
     puts
     p "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
-    player_input
+    introduction_input
   end
 
-  def player_input
+  def introduction_input
     input = gets.chomp.downcase
     if input == 'p' or input == 'play'
       start_game
     elsif input == 'i' or input == 'instructions'
       puts 'The object of Mastermind is to guess a secret code consisting of 4
-colors (red, blue, green, or yellow). A single color may be dupliocated
+colors (red, blue, green, or yellow). A single color may be duplicated
 only once. Each guess results in feedback narrowing down the possibilities
 of the code. You win when you guess the correct code sequence.'
-      player_input
+      introduction_input
     elsif input == 'q' or input == 'quit'
       exit_game
     else
       p "#{input} is not a valid command."
-      player_input
+      introduction_input
     end
   end
 
   def start_game
-    @t1 = Time.now
+    @stopwatch.start_time
     @secret_sequence.randomize_sequence
 
     puts "I have generated a beginner sequence with four elements made up of: (r)ed,
-    (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game.
-    What's your guess?"
+(g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game.
+What's your guess?"
     guess
   end
 
   def guess
     player_guess = gets.chomp.downcase
-    play_guess = Guess.new(player_guess)
     if player_guess == "q" or player_guess == "quit"
       exit_game
     elsif player_guess == 'c' or player_guess == "cheat"
-      p "This is the secret code:  #{@secret_sequence.convert_to_string.upcase}" # REFERENCE TO SECRET CODE
-
+      p "This is the secret code:  #{@secret_sequence.convert_to_string.upcase}"
+      @guess_count.guess_counter
       end_game
     elsif player_guess.length < 4
       p "Your guess sequence is too short."
@@ -62,49 +61,39 @@ of the code. You win when you guess the correct code sequence.'
     elsif player_guess.length > 4
       p "Your guess sequence is too long."
       guess
-    elsif player_guess == @secret_sequence.convert_to_string    #guessing secret doesn't end game???
+    elsif player_guess == @secret_sequence.convert_to_string
+      @guess_count.guess_counter
       end_game
     else
-      guess_array = play_guess.convert_guess
+      guess_array = player_guess.split(//)
       secret_array = @secret_sequence.secret_code
       check = Checker.new(guess_array, secret_array)
-      p "#{player_guess} has #{check.colors} of the correct elements with #{check.compare_position
+      p "#{player_guess} has #{check.color_feedback} of the correct elements with #{check.position_feedback
       } in the correct positions"
-      p "You've taken #{track_guesses} guess"
+      p "You've taken #{@guess_count.guess_counter} guess(es)."
       guess
     end
   end
 
-  def track_guesses
-    @guess_tries += 1
-    @guess_tries
-  end
-
-  def timer_converter_seconds
-    time = @t2 - @t1
-    seconds_remaining = (time % 60).round(0)
-  end
-
-  def timer_converter_minutes
-    time = @t2 - @t1
-    minutes = (time / 60).floor
-  end
-
   def end_game
-    @t2 = Time.now
-
-    puts "Congratulations! You guessed the sequence #{@secret_sequence.convert_to_string.upcase} in #{track_guesses} guesses over #{timer_converter_minutes} minutes,
-    #{timer_converter_seconds} seconds."
+    @stopwatch.stop_time
+    puts "Congratulations! You guessed the sequence #{@secret_sequence.convert_to_string.upcase} in #{@guess_count.guess_count} guesses over #{@stopwatch.timer_converter_minutes} minutes,
+    #{@stopwatch.timer_converter_seconds} seconds."
     puts
     puts "Do you want to (p)lay again or (q)uit?"
-    player_input = gets.chomp.downcase
-    if player_input == 'p' or player_input == 'play'
+    @guess_count.reset_guesses
+    end_game_input
+  end
+
+  def end_game_input
+    input = gets.chomp.downcase
+    if input == 'p' or input == 'play'
       start_game
-    elsif player_input == 'q' or player_input == 'quit'
+    elsif input == 'q' or input == 'quit'
       exit_game
     else
       p "#{input} is not a valid command."
-      player_input
+      end_game_input
     end
   end
 

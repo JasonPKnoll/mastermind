@@ -17,13 +17,5 @@ describe Guess do
 
       expect(guess1.convert_guess).to eq(['r', 'g', 'b', 'y'])
     end
-
-    # prob don't need this
-    it 'converts array to string' do
-      guess1 = Guess.new(['r', 'g', 'b', 'y'])
-    
-      expect(guess1.convert_to_string).to eq('rgby')
-    end
-
   end
 end

@@ -15,18 +15,6 @@ describe Checker do
       expect(check1).to be_an_instance_of(Checker)
       expect(check1.guess).to eq(['r', 'b', 'g', 'y'])
       expect(check1.computer).to eq(['r', 'b', 'g', 'y'])
-      expect(check1.guess_tries).to eq(0)
-    end
-
-    #Prob don't need this test
-    it "compares and has arrays" do
-      guess1 = Guess.new('rbgy')
-      game1 = Game.new(['r', 'b', 'g', 'y'])
-      guess = guess1.convert_guess
-      computer = game1.secret_sequence
-      check1 = Checker.new(guess, computer)
-
-      expect(check1.compare).to eq(true)
     end
 
     it 'returns correct number of guessed positions' do
@@ -36,28 +24,28 @@ describe Checker do
       computer = game1.secret_sequence
       check1 = Checker.new(guess, computer)
 
-      expect(check1.compare_position).to eq(2)
+      expect(check1.position_feedback).to eq(2)
 
       guess1 = Guess.new('bryg')
       game1 = Game.new(['r', 'b', 'g', 'y'])
       guess = guess1.convert_guess
       computer = game1.secret_sequence
       check1 = Checker.new(guess, computer)
-      expect(check1.compare_position).to eq(0)
+      expect(check1.position_feedback).to eq(0)
 
       guess1 = Guess.new('rbgg')
       game1 = Game.new(['r', 'b', 'g', 'y'])
       guess = guess1.convert_guess
       computer = game1.secret_sequence
       check1 = Checker.new(guess, computer)
-      expect(check1.compare_position).to eq(3)
+      expect(check1.position_feedback).to eq(3)
 
       guess1 = Guess.new('rgbg')
       game1 = Game.new(['r', 'b', 'g', 'y'])
       guess = guess1.convert_guess
       computer = game1.secret_sequence
       check1 = Checker.new(guess, computer)
-      expect(check1.compare_position).to eq(1)
+      expect(check1.position_feedback).to eq(1)
     end
 
     it 'returns correct number of guessed colors' do
@@ -67,12 +55,31 @@ describe Checker do
       computer = game1.secret_sequence
       check1 = Checker.new(guess, computer)
 
-      expect(check1.colors).to eq(2)
-    end
+      expect(check1.color_feedback).to eq(2)
 
-    it 'resets tracker to zero' do
-      
-    end
+      guess1 = Guess.new('gyyb')
+      game1 = Game.new(['g', 'r', 'r', 'g'])
+      guess = guess1.convert_guess
+      computer = game1.secret_sequence
+      check1 = Checker.new(guess, computer)
 
+      expect(check1.color_feedback).to eq(1)
+
+      guess1 = Guess.new('rbgy')
+      game1 = Game.new(['y', 'r', 'g', 'y'])
+      guess = guess1.convert_guess
+      computer = game1.secret_sequence
+      check1 = Checker.new(guess, computer)
+
+      expect(check1.color_feedback).to eq(3)
+
+      guess1 = Guess.new('yybb')
+      game1 = Game.new(['g', 'r', 'r', 'g'])
+      guess = guess1.convert_guess
+      computer = game1.secret_sequence
+      check1 = Checker.new(guess, computer)
+
+      expect(check1.color_feedback).to eq(0)
+    end
   end
 end
